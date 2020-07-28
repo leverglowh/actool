@@ -1,5 +1,34 @@
 @import "src/shared/util/variables";
 
 #fish-page {
-  color: $blue;
+  background-color: $light-green;
+}
+
+#fish-page-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.critter-card {
+  background-color: $light-yellow !important;
+  width: 300px;
+  margin-bottom: 0.5em;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+
+  img {
+    width: 90%;
+  }
+
+  .card-title {
+    font-size: larger;
+    background-color: $orange;
+    margin-bottom: 0;
+  }
+}
+
+.critter-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);;
 }

@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux'
 import { IRootState } from 'src/shared/reducers';
-import { getEntities as getFishList } from './fish.reducer';
+import { getEntities as getFishList, getEntity as getFish } from './fish.reducer';
 import './fish.scss';
+import { myNameKey } from 'src/shared/util/api-utils';
+import { Card, CardTitle, CardImg } from 'reactstrap';
 
 export interface IFishPageProps extends StateProps, DispatchProps {}
 
@@ -15,25 +17,31 @@ const FishPage: React.FC<IFishPageProps> = props => {
   const userLang = (navigator.language || navigator.userLanguage).split('-')[0];
   return(
     <div id="fish-page">
-      fish page!
+      <h2>fish page!</h2>
       <br />
       {userLang}
-      {props.fishList[0] && (
-        <>
-          <img src={props.fishList[0].image_uri} alt="fish"/>
-          {props.fishList[0].name?.['name-CNzh']}
-        </>
-      )}
+      <div id="fish-page-body">
+        {props.fishList && props.fishList.map(fish => (
+          <Card key={'fish-' + fish.id} className="critter-card">
+            <CardImg top src={fish.image_uri} alt={fish['file-name']} />
+            <CardTitle>
+              {fish.name?.[myNameKey(fish.name, userLang)]}
+            </CardTitle>
+          </Card>
+        ))}
+      </div>
     </div>
   );
 }
 
 const mapStateToProps = ({ fish }: IRootState) => ({
-  fishList: fish.entities
+  fishList: fish.entities,
+  fish: fish.entity
 });
 
 const mapDispatchToProps = {
-  getFishList
+  getFishList,
+  getFish
 };
 
 type StateProps = ReturnType<typeof mapStateToProps>;

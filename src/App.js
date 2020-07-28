@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next';
 import './App.css';
 import Routes from './routes';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const { t } = useTranslation();
