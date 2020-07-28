@@ -16,6 +16,7 @@ i18n
         it: languageIT,
         "zh-CN": languageZH
     },
+    lng: "en-GB",
     /* When react i18next not finding any language to as default in borwser */
     fallbackLng: "en",
     /* debugger For Development environment */

@@ -1,4 +1,3 @@
-import { ILocalizedName } from 'src/shared/model/model.components';
 export const parseList = list => {
   console.log(list);
   const newList: any[] = [];
@@ -8,8 +7,3 @@ export const parseList = list => {
   console.log(newList);
   return newList;
 };
-
-export const myNameKey = (nameObject: ILocalizedName, lng: string) => {
-  const keys = Object.keys(nameObject);
-  return keys.find(k => k.includes(lng)) || 'name-USen';
-}
