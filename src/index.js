@@ -7,6 +7,13 @@ import i18n from './i18n'
 import * as serviceWorker from './serviceWorker';
 import { Spinner } from 'reactstrap';
 import { COLORS } from './config/constans';
+import {Provider} from 'react-redux';
+import { createStore, compose, applyMiddleware } from 'redux';
+import loggerMiddleware from 'src/config/logger-middleware';
+import promiseMiddleware from 'redux-promise-middleware';
+import rootReducer from 'src/shared/reducers/index';
+
+const store = createStore(rootReducer, compose(applyMiddleware(loggerMiddleware, promiseMiddleware)));
 
 ReactDOM.render(
   <React.StrictMode>
@@ -18,7 +25,9 @@ ReactDOM.render(
           </div>
         }
       >
-        <App />
+        <Provider store={store}>
+          <App />
+        </Provider>
       </Suspense>
     </I18nextProvider>
   </React.StrictMode>,

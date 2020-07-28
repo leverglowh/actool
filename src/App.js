@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next';
 import './App.css';
 import Routes from './routes';
@@ -13,4 +14,4 @@ function App() {
   );
 }
 
-export default App;
+export default connect()(App);
