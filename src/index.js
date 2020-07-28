@@ -1,17 +1,21 @@
 import React, { Suspense } from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import { I18nextProvider } from 'react-i18next';
-import i18n from './i18n'
 import * as serviceWorker from './serviceWorker';
-import { Spinner } from 'reactstrap';
-import { COLORS } from './config/constans';
-import {Provider} from 'react-redux';
-import { createStore, compose, applyMiddleware } from 'redux';
-import loggerMiddleware from 'src/config/logger-middleware';
+import ReactDOM from 'react-dom';
+import i18n from './i18n';
+import { I18nextProvider } from 'react-i18next';
+import { Provider } from 'react-redux';
+import { applyMiddleware, compose, createStore } from 'redux';
 import promiseMiddleware from 'redux-promise-middleware';
+import loggerMiddleware from 'src/config/logger-middleware';
 import rootReducer from 'src/shared/reducers/index';
+import 'src/config/axios-interceptor';
+
+import { Spinner } from 'reactstrap';
+
+import App from './App';
+import { COLORS } from './config/constans';
+
+import './index.css';
 
 const store = createStore(rootReducer, compose(applyMiddleware(loggerMiddleware, promiseMiddleware)));
 
