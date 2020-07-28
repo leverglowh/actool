@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { REQUEST, SUCCESS, FAILURE } from 'src/shared/reducers/action-type.util';
 import { IFish, defaultValue as defaultFish } from 'src/shared/model/fish.model';
-import { parseList } from 'src/shared/util/api-utils';
+import { fishUrl } from 'src/shared/reducers/api-urls';
 
 export const ACTION_TYPES = {
   FETCH_FISH_LIST: 'fish/FETCH_FISH_LIST',
@@ -13,8 +13,7 @@ const initialState = {
   loading: false,
   errorMessage: null,
   entities: [] as ReadonlyArray<IFish>,
-  entity: defaultFish,
-  totalItems: 0
+  entity: defaultFish
 };
 
 export type FishState = Readonly<typeof initialState>;
@@ -39,8 +38,7 @@ export default (state: FishState = initialState, action): FishState => {
       return {
         ...state,
         loading: false,
-        entities: parseList(action.payload.data),
-        totalItems: parseInt(action.payload.headers['x-total-count'], 10)
+        entities: action.payload.data
       };
     case SUCCESS(ACTION_TYPES.FETCH_FISH):
       return {
@@ -57,19 +55,37 @@ export default (state: FishState = initialState, action): FishState => {
   }
 };
 
-const apiUrl = 'http://acnhapi.com/v1/fish';
+const apiUrl = fishUrl;
 
 // Actions
 
-export const getEntities = () => ({
-  type: ACTION_TYPES.FETCH_FISH_LIST,
-  payload: axios.get<IFish>(apiUrl)
-});
+export const getEntities = () => {
+  const localCopy = localStorage.getItem(fishUrl);
+  if (localCopy) return {
+    type: SUCCESS(ACTION_TYPES.FETCH_FISH_LIST),
+    payload: {
+      data: JSON.parse(localCopy)
+    }
+  };
+  return {
+    type: ACTION_TYPES.FETCH_FISH_LIST,
+    payload: axios.get<IFish>(apiUrl)
+  };
+};
 
-export const getEntity = (fishId: number) => ({
-  type: ACTION_TYPES.FETCH_FISH,
-  payload: axios.get<IFish>(`${apiUrl}/${fishId}`)
-});
+export const getEntity = (fishId: number) => {
+  const localCopy = localStorage.getItem(fishUrl);
+  if (localCopy) return {
+    type: SUCCESS(ACTION_TYPES.FETCH_FISH),
+    payload: {
+      data: (JSON.parse(localCopy) as IFish[]).find(f => f.id === fishId)
+    }
+  };
+  return {
+    type: ACTION_TYPES.FETCH_FISH,
+    payload: axios.get<IFish>(`${apiUrl}/${fishId}`)
+  };
+};
 
 export const reset = () => ({
   type: ACTION_TYPES.RESET
