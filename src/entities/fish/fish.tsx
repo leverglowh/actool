@@ -1,29 +1,63 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux'
 import { IRootState } from 'src/shared/reducers';
 import { getEntities as getFishList, getEntity as getFish } from './fish.reducer';
 import './fish.scss';
 import { myNameKey } from 'src/shared/util/localization-util';
-import { Card, CardTitle, CardImg } from 'reactstrap';
+import { Card, CardTitle, CardBody } from 'reactstrap';
+import { sortByAvailability } from 'src/shared/util/critters-util';
+import { useTranslation } from 'react-i18next';
 
 export interface IFishPageProps extends StateProps, DispatchProps {}
 
 const FishPage: React.FC<IFishPageProps> = props => {
+  const [nameKey, setNameKey] = useState('name-USen');
+  const { t } = useTranslation();
   useEffect(() => {
     props.getFishList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    if (props.fishList.length > 0) {
+      setNameKey(myNameKey(props.fishList[0].name));
+    }
+  }, [props.fishList]);
+
   return(
     <div id="fish-page">
       <h2>fish page!</h2>
       <div id="fish-page-body">
-        {props.fishList && props.fishList.map(fish => (
+        {props.fishList && [...props.fishList].sort(sortByAvailability).map(fish => (
           <Card key={'fish-' + fish.id} className="critter-card">
-            <CardImg top src={fish.image_uri} alt={fish['file-name']} />
             <CardTitle>
-              {fish.name?.[myNameKey(fish.name)]}
+              {fish.name?.[nameKey]} &nbsp;
+              {fish.isCatchable[0] && fish.isCatchable[1] ? (<> &#10003;</>) : (<> &times;</>)}
             </CardTitle>
+            <img src={fish.image_uri} alt={fish['file-name']} />
+            <CardBody>
+              <div className="critter-card-body-fst-row">
+                <div className="critter-card-location">
+                  {fish.availability.location?.split('&').map((loc, i) => (
+                    <span key={`fish-${fish.id}-loc-${i}`}>
+                      {i === 1 ? '/' : null}
+                      {t(`location.${loc.trim().toLowerCase().replace('(', '').replace(')', '').replace(/\s/g, '-')}`)}
+                    </span>
+                  ))}
+                </div>
+                <div className="critter-card-time-range">
+                  {fish.availability.isAllDay ? t('all-day') : fish.availability.time}
+                </div>
+              </div>
+              <div className="critter-card-body-snd-row">
+                <div className="critter-card-months">
+                  N: {[...Array(12)].map((m, index) => <div key={fish.id + '-month-' + index} className="month-square" style={fish.availability['month-array-northern']?.includes(index + 1) ? { backgroundColor: '#66b888' } : {} }>{index + 1}</div>)}
+                </div>
+                <div className="critter-card-months">
+                  S: {[...Array(12)].map((m, index) => <div key={fish.id + '-month-' + index} className="month-square" style={fish.availability['month-array-southern']?.includes(index + 1) ? { backgroundColor: '#66b888' } : {} }>{index + 1}</div>)}
+                </div>
+              </div>
+            </CardBody>
           </Card>
         ))}
       </div>

@@ -1,6 +1,16 @@
 {
   "translations": {
-    "title": "Strumenti per Animal Crossing"
+    "title": "Strumenti per Animal Crossing",
+    "location": {
+      "river": "Fiume",
+      "pond": "Stagno",
+      "river-clifftop": "Scogliera",
+      "sea": "Mare",
+      "pier": "Molo",
+      "sea-when-raining-or-snowing": "Mare (Piovendo o nevicando)",
+      "river-mouth": "Foce del Fiume"
+    },
+    "all-day": "Tutto il giorno"
   }
 }
   

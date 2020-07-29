@@ -19,13 +19,48 @@
   transition: 0.3s;
 
   img {
-    width: 90%;
+    width: 100%;
   }
 
   .card-title {
     font-size: larger;
     background-color: $orange;
     margin-bottom: 0;
+  }
+
+  .card-body {
+    background-color: $orange;
+    .critter-card-body-fst-row {
+      height: 50px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      margin-bottom: 0.5em;
+
+      div {
+        width: 48%;
+        border: 1px solid black;
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+    .critter-card-months {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+    }
+    .month-square {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      border: 1px solid black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 }
 

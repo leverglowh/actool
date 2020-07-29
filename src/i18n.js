@@ -1,13 +1,15 @@
 import i18n from 'i18next'
-import LanguageDetector from "i18next-browser-languagedetector"
 import {initReactI18next} from 'react-i18next'
-import XHR from 'i18next-xhr-backend'
+
+import Backend from 'i18next-http-backend';
+import LanguageDetector from 'i18next-browser-languagedetector';
+
 import languageEN from './locate/en/translate.json'
 import languageIT from './locate/it/translate.json'
 import languageZH from './locate/zh/translate.json'
 // @ts-ignore
 i18n
-.use(XHR)
+.use(Backend)
 .use(LanguageDetector)
 .use(initReactI18next)
 .init({
@@ -16,9 +18,8 @@ i18n
         it: languageIT,
         "zh-CN": languageZH
     },
-    lng: "en-GB",
     /* When react i18next not finding any language to as default in borwser */
-    fallbackLng: "en",
+    fallbackLng: 'en',
     /* debugger For Development environment */
     debug: true,
     ns: ["translations"],

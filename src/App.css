@@ -1,3 +1,7 @@
+#root {
+  white-space: pre-line;
+}
+
 .App {
   text-align: center;
 }
