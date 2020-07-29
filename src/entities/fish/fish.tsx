@@ -1,18 +1,26 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux'
 import { IRootState } from 'src/shared/reducers';
 import { getEntities as getFishList, getEntity as getFish } from './fish.reducer';
 import './fish.scss';
 import { myNameKey } from 'src/shared/util/localization-util';
-import { Card, CardTitle, CardImg } from 'reactstrap';
+import { Card, CardTitle, CardImg, CardBody } from 'reactstrap';
+import { isCatchableNow } from 'src/shared/util/critters-util';
 
 export interface IFishPageProps extends StateProps, DispatchProps {}
 
 const FishPage: React.FC<IFishPageProps> = props => {
+  const [nameKey, setNameKey] = useState('name-USen');
   useEffect(() => {
     props.getFishList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (props.fishList.length > 0) {
+      setNameKey(myNameKey(props.fishList[0].name));
+    }
+  }, [props.fishList]);
 
   return(
     <div id="fish-page">
@@ -22,8 +30,12 @@ const FishPage: React.FC<IFishPageProps> = props => {
           <Card key={'fish-' + fish.id} className="critter-card">
             <CardImg top src={fish.image_uri} alt={fish['file-name']} />
             <CardTitle>
-              {fish.name?.[myNameKey(fish.name)]}
+              {fish.name?.[nameKey]} &nbsp;
+              {fish.isCatchable ? (<> &#10003;</>) : (<> &times;</>)}
             </CardTitle>
+            <CardBody>
+
+            </CardBody>
           </Card>
         ))}
       </div>
