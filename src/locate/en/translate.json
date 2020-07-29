@@ -1,5 +1,15 @@
 {
   "translations": {
-    "title": "Animal Crossing Tools"
+    "title": "Animal Crossing Tools",
+    "location": {
+      "river": "River",
+      "pond": "Pond",
+      "river-clifftop": "River (Clifftop)",
+      "sea": "Sea",
+      "pier": "Pier",
+      "sea-when-raining-or-snowing": "Sea (when raining or snowing)",
+      "river-mouth": "River (Mouth)"
+    },
+    "all-day": "All day"
   }
 }

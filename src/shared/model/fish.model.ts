@@ -6,7 +6,7 @@ export interface IFish extends ICritter {
   'file-name'?: string;
   name: ILocalizedName;
   availability: IAvailability;
-  isCatchable: boolean;
+  isCatchable: [boolean, boolean];
   shadow?: string;
   price?: number;
   'price-cj'?: number;
@@ -16,4 +16,4 @@ export interface IFish extends ICritter {
   'icon_uri'?: string;
 }
 
-export const defaultValue: Readonly<IFish> = { id: 0, name: {}, availability: {}, isCatchable: false };
+export const defaultValue: Readonly<IFish> = { id: 0, name: {}, availability: {}, isCatchable: [false, false] };

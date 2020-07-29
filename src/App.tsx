@@ -18,6 +18,7 @@ function App() {
     if (!localStorage.getItem('hemi')) {
       toggleHemiModal();
     }
+    // eslint-disable-next-line
   }, []);
 
   const toggleHemiModal = () => {

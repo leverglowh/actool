@@ -10,11 +10,11 @@ export const getLanguage = () => {
   } else {
     usefulLangString = lang;
   }
-  localStorage.setItem('language', JSON.stringify(usefulLangString));
+  localStorage.setItem('language', usefulLangString);
 }
 
 export const myNameKey = (nameObject: ILocalizedName) => {
-  const lng = JSON.parse(localStorage.getItem('language') || 'US');
+  const lng = localStorage.getItem('language') || 'US';
   const keys = Object.keys(nameObject);
   return keys.find(k => k.includes(lng)) || 'name-USen';
 }

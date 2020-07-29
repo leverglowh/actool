@@ -5,7 +5,7 @@ export interface ICritter {
   'file-name'?: string;
   name: ILocalizedName;
   availability: IAvailability;
-  isCatchable: boolean;
+  isCatchable: [boolean, boolean];
   price?: number;
   'price-cj'?: number;
 }

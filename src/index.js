@@ -1,8 +1,7 @@
 import React, { Suspense } from 'react';
 import * as serviceWorker from './serviceWorker';
 import ReactDOM from 'react-dom';
-import i18n from './i18n';
-import { I18nextProvider } from 'react-i18next';
+import './i18n';
 import { Provider } from 'react-redux';
 import { applyMiddleware, compose, createStore } from 'redux';
 import promiseMiddleware from 'redux-promise-middleware';
@@ -21,19 +20,17 @@ const store = createStore(rootReducer, compose(applyMiddleware(loggerMiddleware,
 
 ReactDOM.render(
   <React.StrictMode>
-    <I18nextProvider i18n={i18n}>
-      <Suspense
-        fallback={
-          <div>
-            <Spinner style={{ color: COLORS.DARK_GREEN }} />
-          </div>
-        }
-      >
-        <Provider store={store}>
-          <App />
-        </Provider>
-      </Suspense>
-    </I18nextProvider>
+    <Suspense
+      fallback={
+        <div>
+          <Spinner style={{ color: COLORS.DARK_GREEN }} />
+        </div>
+      }
+    >
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </Suspense>
   </React.StrictMode>,
   document.getElementById('root')
 );
