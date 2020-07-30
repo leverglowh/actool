@@ -1,6 +1,8 @@
 {
   "translations": {
     "title": "动物之森工具箱",
+    "fish": "鱼",
+    "bugs": "昆虫",
     "location": {
       "river": "河流",
       "pond": "池塘",
@@ -8,7 +10,27 @@
       "sea": "大海",
       "pier": "码头",
       "sea-when-raining-or-snowing": "大海 下雨/下雪",
-      "river-mouth": "出海口"
+      "river-mouth": "出海口",
+      "flying": "飞行",
+      "flying-by-light": "飞行 (灯周围)",
+      "on-trees": "树干",
+      "shaking-trees": "摇树",
+      "on-ponds-and-rivers": "水面",
+      "on-flowers": "花朵上",
+      "on-the-ground": "地面",
+      "on-tree-stumps": "树桩",
+      "on-palm-trees": "椰树干",
+      "on-rotten-food": "腐烂食物",
+      "on-the-beach": "沙滩",
+      "on-beach-rocks": "沙滩岩石",
+      "near-trash": "垃圾堆边",
+      "on-villagers": "居民身上",
+      "on-rocks-when-raining": "岩石\/灌木\n(雨天)",
+      "hitting-rocks": "敲击岩石",
+      "flying-near-hybrid-flowers": "稀有花旁",
+      "on-white-flowers": "白色花旁",
+      "underground": "地下",
+      "under-trees": "树下"
     },
     "all-day": "全天"
   }
