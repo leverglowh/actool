@@ -7,6 +7,7 @@ import { myNameKey } from 'src/shared/util/localization-util';
 import { Card, CardTitle, CardBody } from 'reactstrap';
 import { sortByAvailability } from 'src/shared/util/critters-util';
 import { useTranslation } from 'react-i18next';
+import { capitalizeFirst } from 'src/shared/util/general-utils';
 
 export interface IFishPageProps extends StateProps, DispatchProps {}
 
@@ -31,7 +32,7 @@ const FishPage: React.FC<IFishPageProps> = props => {
         {props.fishList && [...props.fishList].sort(sortByAvailability).map(fish => (
           <Card key={'fish-' + fish.id} className="critter-card">
             <CardTitle>
-              {fish.name?.[nameKey]} &nbsp;
+              {capitalizeFirst(fish.name?.[nameKey])} &nbsp;
               {fish.isCatchable[0] && fish.isCatchable[1] ? (<> &#10003;</>) : (<> &times;</>)}
             </CardTitle>
             <img src={fish.image_uri} alt={fish['file-name']} />
@@ -51,10 +52,10 @@ const FishPage: React.FC<IFishPageProps> = props => {
               </div>
               <div className="critter-card-body-snd-row">
                 <div className="critter-card-months">
-                  N: {[...Array(12)].map((m, index) => <div key={fish.id + '-month-' + index} className="month-square" style={fish.availability['month-array-northern']?.includes(index + 1) ? { backgroundColor: '#66b888' } : {} }>{index + 1}</div>)}
+                  N: {[...Array(12)].map((m, index) => <div key={fish.id + '-month-' + index} className="month-square" style={fish.availability['month-array-northern']?.includes(index + 1) ? { backgroundColor: '#bcf8cb' } : {} }>{index + 1}</div>)}
                 </div>
                 <div className="critter-card-months">
-                  S: {[...Array(12)].map((m, index) => <div key={fish.id + '-month-' + index} className="month-square" style={fish.availability['month-array-southern']?.includes(index + 1) ? { backgroundColor: '#66b888' } : {} }>{index + 1}</div>)}
+                  S: {[...Array(12)].map((m, index) => <div key={fish.id + '-month-' + index} className="month-square" style={fish.availability['month-array-southern']?.includes(index + 1) ? { backgroundColor: '#bcf8cb' } : {} }>{index + 1}</div>)}
                 </div>
               </div>
             </CardBody>

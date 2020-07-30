@@ -1,6 +1,7 @@
 @import "src/shared/util/variables";
 
 #fish-page {
+  font-family: 'ZCOOL KuaiLe', cursive;
   background-color: $light-green;
 }
 
@@ -12,26 +13,37 @@
 }
 
 .critter-card {
-  background-color: $light-yellow !important;
+  background-color: $dark-green !important;
   width: 300px;
   margin-bottom: 0.5em;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
-
+  padding: 20px;
+  padding-top: 0;
   img {
     width: 100%;
+    align-self: center;
+    background-color: $dark-white;
+    margin-bottom: 20px;
+    border-radius: 4px;
   }
 
   .card-title {
+    height: 2em;
     font-size: larger;
-    background-color: $orange;
     margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .card-body {
-    background-color: $orange;
+    background-color: $dark-green;
+    // font-weight: 600;
+    padding: 0;
     .critter-card-body-fst-row {
-      height: 50px;
+      font-size: 14px;
+      height: 35px;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -40,11 +52,18 @@
 
       div {
         width: 48%;
-        border: 1px solid black;
+        background-color: $light-green;
+        // border: 1px solid black;
         border-radius: 4px;
         display: flex;
         flex-direction: column;
         justify-content: center;
+      }
+
+      .critter-card-location {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
       }
     }
     .critter-card-months {
@@ -53,13 +72,16 @@
       justify-content: space-around;
     }
     .month-square {
-      width: 20px;
-      height: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #333333;
+      width: 18px;
+      height: 18px;
       border-radius: 4px;
-      border: 1px solid black;
       display: flex;
       justify-content: center;
       align-items: center;
+      background-color: $dark-white;
     }
   }
 }
