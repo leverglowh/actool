@@ -24,3 +24,22 @@
 
   z-index: 99999;
 }
+
+$breakpoint-tablet: 768px;
+@media (max-width: $breakpoint-tablet) {
+  .App {
+    font-size: smaller;
+  }
+  #header {
+    .navbar {
+      display: flex;
+      flex-direction: column;
+    }
+    ul {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      overflow: scroll;
+    }
+  }
+}

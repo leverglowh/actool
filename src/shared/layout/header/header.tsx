@@ -8,7 +8,7 @@ const Header: React.FC<IHeaderProps> = props => {
   const { t } = useTranslation();
   return (
     <div id="header">
-      <Navbar color="light" light expand="md">
+      <Navbar color="light" light expand>
         <NavbarBrand href="/">{t('title')}</NavbarBrand>
         <Nav className="mr-auto" navbar>
           <NavItem>
