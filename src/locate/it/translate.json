@@ -1,6 +1,8 @@
 {
   "translations": {
     "title": "Strumenti per Animal Crossing",
+    "fish": "Pesci",
+    "bugs": "Insetti",
     "location": {
       "river": "Fiume",
       "pond": "Stagno",
@@ -8,7 +10,27 @@
       "sea": "Mare",
       "pier": "Molo",
       "sea-when-raining-or-snowing": "Mare (Piovendo o nevicando)",
-      "river-mouth": "Foce del Fiume"
+      "river-mouth": "Foce del Fiume",
+      "flying": "Volando",
+      "flying-by-light": "Volando vicino\nalla luce",
+      "on-trees": "Sul tronco di un albero",
+      "shaking-trees": "Scuotendo l'albero",
+      "on-ponds-and-rivers": "Su fiume/stagno",
+      "on-flowers": "Su fiore",
+      "on-the-ground": "Per terra",
+      "on-tree-stumps": "Sul ceppo di un albero",
+      "on-palm-trees": "Su albero di cocco",
+      "on-rotten-food": "Su cibo marcio",
+      "on-the-beach": "Sulla spiaggia",
+      "on-beach-rocks": "Sulla roccia di spiaggia",
+      "near-trash": "Vicino alla spazzatura",
+      "on-villagers": "Su un abitante",
+      "on-rocks-when-raining": "Su roccia (piovendo)",
+      "hitting-rocks": "Colpendo una roccia",
+      "flying-near-hybrid-flowers": "Volando vicino\na fiori ibridi",
+      "on-white-flowers": "Su un fiore bianco",
+      "underground": "Sotto terra",
+      "under-trees": "Sotto un albero"
     },
     "all-day": "Tutto il giorno"
   }

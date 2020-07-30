@@ -5,60 +5,59 @@ import { IRootState } from 'src/shared/reducers';
 import { useTranslation } from 'react-i18next';
 import { Card, CardTitle, CardBody } from 'reactstrap';
 
-import { getEntities as getFishList, getEntity as getFish } from './fish.reducer';
+import { getEntities as getbugList, getEntity as getBug } from './bugs.reducer';
 import { myNameKey } from 'src/shared/util/localization-util';
 import { sortByAvailability } from 'src/shared/util/critters-util';
 import { capitalizeFirst } from 'src/shared/util/general-utils';
 
-import 'src/shared/util/critter.scss';
-import './fish.scss';
+import './bugs.scss';
 
-export interface IFishPageProps extends StateProps, DispatchProps {}
+export interface IBugsPageProps extends StateProps, DispatchProps {}
 
-const FishPage: React.FC<IFishPageProps> = props => {
+const BugsPage: React.FC<IBugsPageProps> = props => {
   const [nameKey, setNameKey] = useState('name-USen');
   const { t } = useTranslation();
   useEffect(() => {
-    props.getFishList();
+    props.getbugList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    if (props.fishList.length > 0) {
-      setNameKey(myNameKey(props.fishList[0].name));
+    if (props.bugList.length > 0) {
+      setNameKey(myNameKey(props.bugList[0].name));
     }
-  }, [props.fishList]);
+  }, [props.bugList]);
 
   return(
-    <div id="fish-page">
-      <div id="fish-page-body">
-        {props.fishList && [...props.fishList].sort(sortByAvailability).map(fish => (
-          <Card key={'fish-' + fish.id} className="critter-card">
+    <div id="bugs-page">
+      <div id="bugs-page-body">
+        {props.bugList && [...props.bugList].sort(sortByAvailability).map(bug => (
+          <Card key={'bug-' + bug.id} className="critter-card">
             <CardTitle>
-              {capitalizeFirst(fish.name?.[nameKey])} &nbsp;
-              {fish.isCatchable[0] && fish.isCatchable[1] ? (<> &#10003;</>) : (<> &times;</>)}
+              {capitalizeFirst(bug.name?.[nameKey])} &nbsp;
+              {bug.isCatchable[0] && bug.isCatchable[1] ? (<> &#10003;</>) : (<> &times;</>)}
             </CardTitle>
-            <img src={fish.image_uri} alt={fish['file-name']} />
+            <img src={bug.image_uri} alt={bug['file-name']} />
             <CardBody>
               <div className="critter-card-body-fst-row">
                 <div className="critter-card-location">
-                  {fish.availability.location?.split('&').map((loc, i) => (
-                    <span key={`fish-${fish.id}-loc-${i}`}>
+                  {bug.availability.location?.split('&').map((loc, i) => (
+                    <span key={`bug-${bug.id}-loc-${i}`}>
                       {i === 1 ? '/' : null}
                       {t(`location.${loc.trim().toLowerCase().replace('(', '').replace(')', '').replace(/\s/g, '-')}`)}
                     </span>
                   ))}
                 </div>
                 <div className="critter-card-time-range">
-                  {fish.availability.isAllDay ? t('all-day') : fish.availability.time}
+                  {bug.availability.isAllDay ? t('all-day') : bug.availability.time}
                 </div>
               </div>
               <div className="critter-card-body-snd-row">
                 <div className="critter-card-months">
-                  N: {[...Array(12)].map((m, index) => <div key={fish.id + '-month-' + index} className="month-square" style={fish.availability['month-array-northern']?.includes(index + 1) ? { backgroundColor: '#bcf8cb' } : {} }>{index + 1}</div>)}
+                  N: {[...Array(12)].map((m, index) => <div key={bug.id + '-month-' + index} className="month-square" style={bug.availability['month-array-northern']?.includes(index + 1) ? { backgroundColor: '#bcf8cb' } : {} }>{index + 1}</div>)}
                 </div>
                 <div className="critter-card-months">
-                  S: {[...Array(12)].map((m, index) => <div key={fish.id + '-month-' + index} className="month-square" style={fish.availability['month-array-southern']?.includes(index + 1) ? { backgroundColor: '#bcf8cb' } : {} }>{index + 1}</div>)}
+                  S: {[...Array(12)].map((m, index) => <div key={bug.id + '-month-' + index} className="month-square" style={bug.availability['month-array-southern']?.includes(index + 1) ? { backgroundColor: '#bcf8cb' } : {} }>{index + 1}</div>)}
                 </div>
               </div>
             </CardBody>
@@ -69,14 +68,14 @@ const FishPage: React.FC<IFishPageProps> = props => {
   );
 }
 
-const mapStateToProps = ({ fish }: IRootState) => ({
-  fishList: fish.entities,
-  fish: fish.entity
+const mapStateToProps = ({ bugs }: IRootState) => ({
+  bugList: bugs.entities,
+  bug: bugs.entity
 });
 
 const mapDispatchToProps = {
-  getFishList,
-  getFish
+  getbugList,
+  getBug
 };
 
 type StateProps = ReturnType<typeof mapStateToProps>;
@@ -85,4 +84,4 @@ type DispatchProps = typeof mapDispatchToProps;
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(FishPage);
+)(BugsPage);

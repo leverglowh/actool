@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux'
 import Routes from './routes';
 
-import { useTranslation } from 'react-i18next';
 import { Modal, ModalFooter, Button } from 'reactstrap';
 
+import Header from './shared/layout/header/header';
 import { getLanguage } from './shared/util/localization-util';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -12,7 +12,6 @@ import './App.scss';
 
 function App() {
   const [hemiModal, setHemiModal] = useState(false);
-  const { t } = useTranslation();
   useEffect(() => {
     getLanguage();
     if (!localStorage.getItem('hemi')) {
@@ -35,8 +34,7 @@ function App() {
 
   return (
       <div className="App">
-        <h1>{t('title')}</h1>
-        <a href="/fish">FISH</a>
+        <Header />
         <Routes />
         <Modal isOpen={hemiModal}>
           What is your hemisphere?

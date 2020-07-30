@@ -1,14 +1,36 @@
 {
   "translations": {
     "title": "Animal Crossing Tools",
+    "fish": "Fish",
+    "bugs": "Bugs",
     "location": {
       "river": "River",
       "pond": "Pond",
       "river-clifftop": "River (Clifftop)",
       "sea": "Sea",
       "pier": "Pier",
-      "sea-when-raining-or-snowing": "Sea (when raining or snowing)",
-      "river-mouth": "River (Mouth)"
+      "sea-when-raining-or-snowing": "Sea\n(raining/snowing)",
+      "river-mouth": "River (Mouth)",
+      "flying": "Flying",
+      "flying-by-light": "Flying by light",
+      "on-trees": "On trees",
+      "shaking-trees": "Shaking trees",
+      "on-ponds-and-rivers": "On ponds and rivers",
+      "on-flowers": "On flowers",
+      "on-the-ground": "On the ground",
+      "on-tree-stumps": "On tree stumps",
+      "on-palm-trees": "On palm trees",
+      "on-rotten-food": "On rotten food",
+      "on-the-beach": "On the beach",
+      "on-beach-rocks": "On beach rocks",
+      "near-trash": "Near trash",
+      "on-villagers": "On villagers",
+      "on-rocks-when-raining": "On rocks\n(raining)",
+      "hitting-rocks": "Hitting rocks",
+      "flying-near-hybrid-flowers": "Flying near\nhybrid flowers",
+      "on-white-flowers": "On white flowers",
+      "underground": "Underground",
+      "under-trees": "Under trees"
     },
     "all-day": "All day"
   }
