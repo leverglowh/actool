@@ -6,7 +6,6 @@ export interface IHeaderProps {}
 
 const Header: React.FC<IHeaderProps> = props => {
   const { t } = useTranslation();
-<<<<<<< HEAD
   const refresh = () => {
     localStorage.clear();
     window.location.reload();
@@ -14,11 +13,6 @@ const Header: React.FC<IHeaderProps> = props => {
   return (
     <div id="header">
       <Navbar color="light" light expand>
-=======
-  return (
-    <div id="header">
-      <Navbar color="light" light expand="md">
->>>>>>> origin/main
         <NavbarBrand href="/">{t('title')}</NavbarBrand>
         <Nav className="mr-auto" navbar>
           <NavItem>
@@ -28,11 +22,7 @@ const Header: React.FC<IHeaderProps> = props => {
             <NavLink href="/bugs">{t('bugs')}</NavLink>
           </NavItem>
           <NavItem>
-<<<<<<< HEAD
             <NavLink href="https://github.com/leverglowh/actool" target="_blank">GitHub</NavLink>
-=======
-            <NavLink href="https://github.com/leverglowh/actool">GitHub</NavLink>
->>>>>>> origin/main
           </NavItem>
           {/*
           <UncontrolledDropdown nav inNavbar>
@@ -54,10 +44,7 @@ const Header: React.FC<IHeaderProps> = props => {
           </UncontrolledDropdown>
           */}
         </Nav>
-<<<<<<< HEAD
         <img onClick={refresh} id="refresh-but" src={process.env.PUBLIC_URL + '/svg/refresh.svg'} alt="refresh" width="20"/>
-=======
->>>>>>> origin/main
         {/* <NavbarText>Simple Text</NavbarText> */}
       </Navbar>
     </div>
