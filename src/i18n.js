@@ -13,10 +13,11 @@ i18n
 .use(LanguageDetector)
 .use(initReactI18next)
 .init({
+    load: 'languageOnly',
     resources: {
-        "en-GB": languageEN,
+        en: languageEN,
         it: languageIT,
-        "zh-CN": languageZH
+        zh: languageZH
     },
     /* When react i18next not finding any language to as default in borwser */
     fallbackLng: 'en',

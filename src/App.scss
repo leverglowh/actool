@@ -34,8 +34,7 @@ html, body {
 }
 
 #refresh-but {
-  position: sticky;
-  position: -webkit-sticky;
+  position: fixed;
   top: 20px;
   right: 20px;
 }
@@ -67,5 +66,10 @@ $breakpoint-tablet: 768px;
     ul::-webkit-scrollbar {
       display: none;
     }
+  }
+
+  #route-container {
+    margin-top: 91px;
+    height: calc(100vh - 91px);
   }
 }
