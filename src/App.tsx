@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux'
 import Routes from './routes';
 
-import { Modal, ModalFooter, Button } from 'reactstrap';
+import { Modal, ModalFooter, Button, ModalBody } from 'reactstrap';
 
 import Header from './shared/layout/header/header';
 import { getLanguage } from './shared/util/localization-util';
@@ -36,8 +36,10 @@ function App() {
       <div className="App">
         <Header />
         <Routes />
-        <Modal isOpen={hemiModal}>
-          What is your hemisphere?
+        <Modal isOpen={hemiModal} centered>
+          <ModalBody>
+            Hello! What is your hemisphere?
+          </ModalBody>
           <ModalFooter>
             <Button data-hemi="northern" onClick={handleHemiChoice}>North</Button>
             <Button data-hemi="southern" onClick={handleHemiChoice}>South</Button>

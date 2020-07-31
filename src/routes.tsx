@@ -1,22 +1,28 @@
 import React from 'react';
 import {
   BrowserRouter as Router,
-  Switch,
-  Route
+  Switch
 } from 'react-router-dom';
 import FishPage from './entities/fish/fish';
 import BugsPage from './entities/bugs/bugs';
+import PrivateRoute from './shared/auth/private-route';
+import Home from './shared/layout/home/home';
 
 const Routes = () => (
   <Router>
+    <div id="route-container">
       <Switch>
-        <Route path="/fish">
+        <PrivateRoute path="/" exact>
+          <Home />
+        </PrivateRoute>
+        <PrivateRoute path="/fish">
           <FishPage />
-        </Route>
-        <Route path="/bugs">
+        </PrivateRoute>
+        <PrivateRoute path="/bugs">
           <BugsPage />
-        </Route>
+        </PrivateRoute>
       </Switch>
+    </div>
   </Router>
 );
 
