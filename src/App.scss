@@ -53,6 +53,10 @@ $breakpoint-tablet: 768px;
     .navbar {
       display: flex;
       flex-direction: column;
+
+      a {
+        vertical-align: middle;
+      }
     }
     ul {
       width: 100%;
