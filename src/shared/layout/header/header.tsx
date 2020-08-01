@@ -26,6 +26,9 @@ const Header: React.FC<IHeaderProps> = props => {
           <NavItem>
             <NavLink href="https://github.com/leverglowh/actool" target="_blank">GitHub</NavLink>
           </NavItem>
+          <NavItem>
+            <Link className="nav-link" to="/login">{t('login')}</Link>
+          </NavItem>
           {/*
           <UncontrolledDropdown nav inNavbar>
             <DropdownToggle nav caret>

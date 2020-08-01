@@ -8,6 +8,7 @@ import { AUTH_TOKEN_KEY } from 'src/config/constans';
 export const ACTION_TYPES = {
   LOGIN: 'authentication/LOGIN',
   LOGOUT: 'authentication/LOGOUT',
+  REGISTER: 'authentication/REGISTER',
   GET_USER_INFORMATION: 'authentication/USER',
   ERROR_MESSAGE: 'authentication/ERROR_MESSAGE'
 };
@@ -48,7 +49,29 @@ export default (state: AuthenticationState = initialState, action): Authenticati
         loginError: false,
         loginSuccess: true,
         user: action.payload.data.user,
-        idToken: action.payload.data.jwt
+        idToken: action.payload.data.jwt,
+        isAuthenticated: true
+      };
+    case REQUEST(ACTION_TYPES.REGISTER):
+      return {
+        ...state,
+        loading: true
+      };
+    case FAILURE(ACTION_TYPES.REGISTER):
+      return {
+        ...initialState,
+        errorMessage: action.payload,
+        loginError: true
+      };
+    case SUCCESS(ACTION_TYPES.REGISTER):
+      return {
+        ...state,
+        loading: false,
+        loginError: false,
+        loginSuccess: true,
+        user: action.payload.data.user,
+        idToken: action.payload.data.jwt,
+        isAuthenticated: true
       };
     case REQUEST(ACTION_TYPES.GET_USER_INFORMATION):
       return {
@@ -85,6 +108,15 @@ export const login = (identifier, password) => {
   const result = {
     type: ACTION_TYPES.LOGIN,
     payload: axios.post(`${strapiUrl}auth/local`, { identifier, password })
+  };
+
+  return result;
+};
+
+export const register = (username, password, email) => {
+  const result = {
+    type: ACTION_TYPES.REGISTER,
+    payload: axios.post(`${strapiUrl}auth/local/register`, { username, password, email })
   };
 
   return result;
