@@ -69,8 +69,6 @@ const LoginModal: React.FC<ILoginModalProps> = props => {
         sessionStorage.setItem(AUTH_TOKEN_KEY, props.idToken);
       }
 
-      alert(props.user.email);
-
       setTimeout(() => handleClose(null), 1000);
     }
     // eslint-disable-next-line

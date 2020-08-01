@@ -5,3 +5,5 @@ export const COLORS = {
   YELLOW: '#FFD04F',
   LIGHT_YELLOW: '#FFE86C'
 }
+
+export const AUTH_TOKEN_KEY = 'actool-authenticationToken';

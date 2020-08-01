@@ -9,9 +9,16 @@ export interface IUser {
   confirmed?: boolean;
   blocked?: boolean;
   created_at?: string;
-  created_by?: string
+  created_by?: IAdminUser;
   updated_at?: string;
-  updated_by?: string;
+  updated_by?: IAdminUser;
+}
+
+export interface IAdminUser {
+  id?: number;
+  firstname?: string;
+  lastname?: string;
+  username?: string;
 }
 
 export const defaultValue: Readonly<IUser> = {}

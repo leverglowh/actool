@@ -33,9 +33,9 @@ const FishPage: React.FC<IFishPageProps> = props => {
 
   return(
     <div id="fish-page">
-      <h1>
+      {props.user && <h1>
         {props.user.username}
-      </h1>
+      </h1>}
       <div id="fish-page-body">
         {props.fishList && [...props.fishList].sort(sortByAvailability).map(fish => (
           <Card key={'fish-' + fish.id} className="critter-card">

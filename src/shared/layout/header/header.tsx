@@ -9,6 +9,7 @@ const Header: React.FC<IHeaderProps> = props => {
   const { t } = useTranslation();
   const refresh = () => {
     localStorage.clear();
+    sessionStorage.clear();
     window.location.reload();
   }
   return (
