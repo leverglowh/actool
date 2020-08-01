@@ -2,7 +2,7 @@ import axios from 'axios';
 import { parseList } from 'src/shared/util/api-utils';
 const url = require('url');
 axios.interceptors.response.use(response => {
-  if (!response.data.id) {
+  if (!response.data.id && !response.data.jwt) {
     // It's a list!
     const parsedURL = url.parse(response.config.url).href;
     console.log(parsedURL);

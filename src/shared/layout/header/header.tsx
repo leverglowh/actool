@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Navbar, NavbarBrand, NavLink, Nav, NavItem, /*UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, NavbarText */} from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 export interface IHeaderProps {}
 
@@ -16,10 +17,10 @@ const Header: React.FC<IHeaderProps> = props => {
         <NavbarBrand href="/">{t('title')}</NavbarBrand>
         <Nav className="mr-auto" navbar>
           <NavItem>
-            <NavLink href="/fish">{t('fish')}</NavLink>
+            <Link className="nav-link" to="/fish">{t('fish')}</Link>
           </NavItem>
           <NavItem>
-            <NavLink href="/bugs">{t('bugs')}</NavLink>
+            <Link className="nav-link" to="/bugs">{t('bugs')}</Link>
           </NavItem>
           <NavItem>
             <NavLink href="https://github.com/leverglowh/actool" target="_blank">GitHub</NavLink>

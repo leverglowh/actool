@@ -1,19 +1,24 @@
 import React from 'react';
 import {
-  BrowserRouter as Router,
   Switch
 } from 'react-router-dom';
+import PrivateRoute from './shared/auth/private-route';
+
 import FishPage from './entities/fish/fish';
 import BugsPage from './entities/bugs/bugs';
-import PrivateRoute from './shared/auth/private-route';
+import LoginModal from './shared/layout/home/login-modal';
 import Home from './shared/layout/home/home';
 
 const Routes = () => (
-  <Router>
     <div id="route-container">
       <Switch>
-        <PrivateRoute path="/" exact>
+        <PrivateRoute exact path={['/', '/login']}>
           <Home />
+        </PrivateRoute>
+        <PrivateRoute path="/auth/callback/">
+          <div>
+            xiao
+          </div>
         </PrivateRoute>
         <PrivateRoute path="/fish">
           <FishPage />
@@ -22,8 +27,10 @@ const Routes = () => (
           <BugsPage />
         </PrivateRoute>
       </Switch>
+      <PrivateRoute path="/login">
+        <LoginModal />
+      </PrivateRoute>
     </div>
-  </Router>
 );
 
 export default Routes;

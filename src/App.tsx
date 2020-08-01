@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { connect } from 'react-redux'
 import Routes from './routes';
 
@@ -34,8 +35,10 @@ function App() {
 
   return (
       <div className="App">
-        <Header />
-        <Routes />
+        <Router>
+          <Header />
+          <Routes />
+        </Router>
         <Modal isOpen={hemiModal} centered>
           <ModalBody>
             Hello! What is your hemisphere?

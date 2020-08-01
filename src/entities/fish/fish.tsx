@@ -31,6 +31,9 @@ const FishPage: React.FC<IFishPageProps> = props => {
 
   return(
     <div id="fish-page">
+      <h1>
+        {props.user.username}
+      </h1>
       <div id="fish-page-body">
         {props.fishList && [...props.fishList].sort(sortByAvailability).map(fish => (
           <Card key={'fish-' + fish.id} className="critter-card">
@@ -69,7 +72,8 @@ const FishPage: React.FC<IFishPageProps> = props => {
   );
 }
 
-const mapStateToProps = ({ fish }: IRootState) => ({
+const mapStateToProps = ({ fish, authentication }: IRootState) => ({
+  user: authentication.user,
   fishList: fish.entities,
   fish: fish.entity
 });
