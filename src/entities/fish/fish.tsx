@@ -5,6 +5,7 @@ import { IRootState } from 'src/shared/reducers';
 import { useTranslation } from 'react-i18next';
 import { Card, CardTitle, CardBody } from 'reactstrap';
 
+import { getMe } from 'src/shared/reducers/authentication';
 import { getEntities as getFishList, getEntity as getFish } from './fish.reducer';
 import { myNameKey } from 'src/shared/util/localization-util';
 import { sortByAvailability } from 'src/shared/util/critters-util';
@@ -19,6 +20,7 @@ const FishPage: React.FC<IFishPageProps> = props => {
   const [nameKey, setNameKey] = useState('name-USen');
   const { t } = useTranslation();
   useEffect(() => {
+    props.getMe();
     props.getFishList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -80,7 +82,8 @@ const mapStateToProps = ({ fish, authentication }: IRootState) => ({
 
 const mapDispatchToProps = {
   getFishList,
-  getFish
+  getFish,
+  getMe
 };
 
 type StateProps = ReturnType<typeof mapStateToProps>;

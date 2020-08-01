@@ -2,10 +2,12 @@ import axios from 'axios';
 
 import { REQUEST, SUCCESS, FAILURE } from 'src/shared/reducers/action-type.util';
 import { defaultValue as defaultUser } from 'src/shared/model/user.model';
+import { strapiUrl } from './api-urls';
 
 export const ACTION_TYPES = {
   LOGIN: 'authentication/LOGIN',
   LOGOUT: 'authentication/LOGOUT',
+  GET_USER_INFORMATION: 'authentication/USER',
   ERROR_MESSAGE: 'authentication/ERROR_MESSAGE'
 };
 
@@ -49,6 +51,22 @@ export default (state: AuthenticationState = initialState, action): Authenticati
         user: action.payload.data.user,
         idToken: action.payload.data.jwt
       };
+    case REQUEST(ACTION_TYPES.GET_USER_INFORMATION):
+      return {
+        ...state,
+        loading: true
+      };
+    case FAILURE(ACTION_TYPES.GET_USER_INFORMATION):
+      return {
+        ...initialState,
+        errorMessage: action.payload
+      };
+    case SUCCESS(ACTION_TYPES.GET_USER_INFORMATION):
+      return {
+        ...state,
+        loading: false,
+        user: action.payload.data.user
+      };
     case ACTION_TYPES.LOGOUT:
       return {
         ...initialState
@@ -66,11 +84,26 @@ export default (state: AuthenticationState = initialState, action): Authenticati
 export const login = (identifier, password) => {
   const result = {
     type: ACTION_TYPES.LOGIN,
-    payload: axios.post('http://localhost:1337/auth/local', { identifier, password })
+    payload: axios.post(`${strapiUrl}auth/local`, { identifier, password })
   };
 
   return result;
 };
+
+export const getMe = () => {
+  const token = localStorage.getItem(AUTH_TOKEN_KEY) || sessionStorage.getItem(AUTH_TOKEN_KEY);
+  if (!token) {
+    return {
+      type: ACTION_TYPES.GET_USER_INFORMATION,
+      payload: 'Not authenticated!'
+    }
+  } else {
+    return {
+      type: ACTION_TYPES.GET_USER_INFORMATION,
+      payload: axios.get(`${strapiUrl}users/me`, { headers: { 'Authorization': `Bearer ${token}` } })
+    }
+  }
+}
 
 export const clearAuthToken = () => {
   if (localStorage.getItem(AUTH_TOKEN_KEY)) {
