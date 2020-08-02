@@ -9,6 +9,7 @@ import BugsPage from './entities/bugs/bugs';
 import LoginModal from './shared/layout/home/login-modal';
 import RegisterModal from './shared/layout/home/register-modal';
 import Home from './shared/layout/home/home';
+import ConnectPage from './shared/auth/connect/connect-page';
 
 const Routes = () => (
     <div id="route-container">
@@ -16,10 +17,8 @@ const Routes = () => (
         <PrivateRoute exact path={['/', '/login', '/register']}>
           <Home />
         </PrivateRoute>
-        <PrivateRoute path="/auth/callback/">
-          <div>
-            xiao
-          </div>
+        <PrivateRoute exact path="/connect/:provider">
+          <ConnectPage />
         </PrivateRoute>
         <PrivateRoute path="/fish">
           <FishPage />

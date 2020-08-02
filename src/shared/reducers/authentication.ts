@@ -113,6 +113,13 @@ export const login = (identifier, password) => {
   return result;
 };
 
+export const loginProvider = (provider, search) => {
+  return {
+    type: ACTION_TYPES.LOGIN,
+    payload: axios.get(`${strapiUrl}auth/${provider}/callback${search}`)
+  }
+}
+
 export const register = (username, password, email) => {
   const result = {
     type: ACTION_TYPES.REGISTER,
