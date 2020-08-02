@@ -8,6 +8,7 @@ import { IRootState } from 'src/shared/reducers';
 import { login } from 'src/shared/reducers/authentication';
 
 import './login.scss';
+import { strapiUrl } from 'src/shared/reducers/api-urls';
 
 export interface ILoginModalProps extends StateProps, DispatchProps, RouteComponentProps {}
 
@@ -61,6 +62,14 @@ const LoginModal: React.FC<ILoginModalProps> = props => {
     props.login(username, password);
   };
 
+  const loginGoogle = () => {
+    window.location.href = strapiUrl + 'connect/google';
+  };
+
+  const loginDiscord = () => {
+    window.location.href = strapiUrl + 'connect/discord';
+  };
+
   useEffect(() => {
     if (props.loginSuccess) {
       if (loginData.rememberMe) {
@@ -81,17 +90,26 @@ const LoginModal: React.FC<ILoginModalProps> = props => {
           Login
         </ModalHeader>
         <ModalBody>
-            {props.loginError ? (
-              <Alert color="danger">
-                <strong>Errore nel Login</strong> Per favore controlla le credenziali.
-              </Alert>
-            ) : props.loginSuccess ? (
-              <Alert color="success">
-                <strong>Login success!</strong>
-                <br />
-                Redirecting to homepage.
-              </Alert>
-            ) : null}
+          <div className="pre-login-form">
+            <div className="providers">
+              <img id="login-google" onClick={loginGoogle} style={{ width: 191, height: 46 }} src={`${process.env.PUBLIC_URL}/providers/google.png`} alt="login with google" />
+              <img id="login-discord" onClick={loginDiscord} style={{ width: 191, height: 46 }} src={`${process.env.PUBLIC_URL}/providers/discord.png`} alt="login with discord" />
+            </div>
+            <div className="text-or">
+              or
+            </div>
+          </div>
+          {props.loginError ? (
+            <Alert color="danger">
+              <strong>Errore nel Login</strong> Per favore controlla le credenziali.
+            </Alert>
+          ) : props.loginSuccess ? (
+            <Alert color="success">
+              <strong>Login success!</strong>
+              <br />
+              Redirecting to homepage.
+            </Alert>
+          ) : null}
           <FormGroup>
             <Label for="login-username">Username</Label>
             <Input
@@ -118,17 +136,19 @@ const LoginModal: React.FC<ILoginModalProps> = props => {
             <FormFeedback>Should not be empty</FormFeedback>
           </FormGroup>
           <FormGroup>
-            <Label for="login-remember-me">Remember me</Label>
             <Input
               type="checkbox"
               name="rememberMe"
               id="login-remember-me"
               checked={loginData.rememberMe}
               onChange={handleRememberMeChange}/>
+            <Label id="login-remember-me-label" for="login-remember-me">Remember me</Label>
           </FormGroup>
+          {/*
           <Alert color="warning">
             <Link to="/reset/request">Hai dimenticato la tua password?</Link>
           </Alert>
+          */}
           <Alert color="warning">
             <span>Non sei ancora registrato?</span> <Link to="/register">Registrati subito</Link>
           </Alert>
