@@ -7,7 +7,7 @@ Created with CRA, extended with react-app-rewired and customize-cra.
 - [x] User login with strapi
 - [x] User login with google/discord provider
 - [ ] Fish page (WIP)
+- [ ] Bugs page (WIP)
 - [ ] Sea creature page
-- [ ] Insects page
 - [ ] Google sheets for simple storage (user sensitive?) (should I use localstorage instead??)
 - [ ] Do not abandon project
