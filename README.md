@@ -3,6 +3,9 @@
 This project is a Work in Progress and it's in early stages. ***Nothing works***.
 
 Created with CRA, extended with react-app-rewired and customize-cra.
+
+- [x] User login with strapi
+- [x] User login with google/discord provider
 - [ ] Fish page (WIP)
 - [ ] Sea creature page
 - [ ] Insects page
