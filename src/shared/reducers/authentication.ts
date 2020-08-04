@@ -88,6 +88,7 @@ export default (state: AuthenticationState = initialState, action): Authenticati
       return {
         ...state,
         loading: false,
+        isAuthenticated: true,
         user: action.payload.data
       };
     case ACTION_TYPES.LOGOUT:

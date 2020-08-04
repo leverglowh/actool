@@ -5,6 +5,10 @@ html, body {
   height: 100%;
 }
 
+body {
+  margin: 0;
+}
+
 #root {
   white-space: pre-line;
   height: 100%;
@@ -16,32 +20,9 @@ html, body {
   font-family: 'ZCOOL KuaiLe', cursive;
 }
 
-#header {
-  .navbar {
-    background-color: $dark-green !important;
-  }
-  position: fixed;
-  top: 0;
-  width: 100%;
-
-  box-shadow: 0px 5px 15px #27272780;
-  -webkit-box-shadow: 0px 5px 15px #27272780;
-  -moz-box-shadow: 0px 5px 15px #27272780;
-
-  z-index: 1049;
-
-  flex: 0 1 auto;
-}
-
-#refresh-but {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-}
-
 #route-container {
-  margin-top: 56px;
-  height: calc(100vh - 56px);
+  padding-top: 56px;
+  height: 100%;
 }
 
 $breakpoint-tablet: 768px;
