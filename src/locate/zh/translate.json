@@ -27,9 +27,10 @@
       "on-beach-rocks": "沙滩岩石",
       "near-trash": "垃圾堆边",
       "on-villagers": "居民身上",
-      "on-rocks-when-raining": "岩石\/灌木\n(雨天)",
+      "on-rocks-and-bush-when-raining": "岩石\/灌木\n(雨天)",
       "hitting-rocks": "敲击岩石",
       "flying-near-hybrid-flowers": "稀有花旁",
+      "flying-near-water": "水源旁",
       "on-white-flowers": "白色花旁",
       "underground": "地下",
       "under-trees": "树下"
