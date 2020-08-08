@@ -19,7 +19,7 @@ const ConnectPage: React.FC<IConnectPageProps> = props => {
 
   useEffect(() => {
     if (props.loginSuccess) {
-      sessionStorage.setItem(AUTH_TOKEN_KEY, props.idToken);
+      localStorage.setItem(AUTH_TOKEN_KEY, props.idToken);
 
       setTimeout(() => setRedirect(true), 1000);
     }

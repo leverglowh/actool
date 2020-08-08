@@ -4,6 +4,7 @@ import { IRootState } from 'src/shared/reducers';
 
 import { useTranslation } from 'react-i18next';
 import { Card, CardTitle, CardBody } from 'reactstrap';
+import classnames from 'classnames';
 
 import { getMe } from 'src/shared/reducers/authentication';
 import { getEntities as getFishList, getEntity as getFish } from './fish.reducer';
@@ -38,7 +39,7 @@ const FishPage: React.FC<IFishPageProps> = props => {
       </h1>}
       <div id="fish-page-body">
         {props.fishList && [...props.fishList].sort(sortByAvailability).map(fish => (
-          <Card key={'fish-' + fish.id} className="critter-card">
+          <Card key={'fish-' + fish.id} className={classnames('critter-card')}>
             <CardTitle>
               {capitalizeFirst(fish.name?.[nameKey])} &nbsp;
               {fish.isCatchable[0] && fish.isCatchable[1] ? (<> &#10003;</>) : (<> &times;</>)}

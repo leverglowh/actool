@@ -6,9 +6,9 @@ import { Modal, Form, ModalHeader, ModalBody, Alert, FormGroup, Label, Input, Fo
 
 import { IRootState } from 'src/shared/reducers';
 import { login } from 'src/shared/reducers/authentication';
+import { strapiUrl } from 'src/shared/reducers/api-urls';
 
 import './login.scss';
-import { strapiUrl } from 'src/shared/reducers/api-urls';
 
 export interface ILoginModalProps extends StateProps, DispatchProps, RouteComponentProps {}
 
