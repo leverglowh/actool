@@ -34,21 +34,21 @@ function App() {
   }
 
   return (
-      <div className="App">
-        <Router>
-          <Header />
-          <Routes />
-        </Router>
-        <Modal isOpen={hemiModal} centered>
-          <ModalBody>
-            Hello! What is your hemisphere?
+    <div className="App">
+      <Router>
+        <Header />
+        <Routes />
+      </Router>
+      <Modal isOpen={hemiModal} centered>
+        <ModalBody>
+          Hello! What is your hemisphere?
           </ModalBody>
-          <ModalFooter>
-            <Button data-hemi="northern" onClick={handleHemiChoice}>North</Button>
-            <Button data-hemi="southern" onClick={handleHemiChoice}>South</Button>
-          </ModalFooter>
-        </Modal>
-      </div>
+        <ModalFooter>
+          <Button data-hemi="northern" onClick={handleHemiChoice}>North</Button>
+          <Button data-hemi="southern" onClick={handleHemiChoice}>South</Button>
+        </ModalFooter>
+      </Modal>
+    </div>
   );
 }
 
